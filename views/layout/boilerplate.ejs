@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&display=swap" rel="stylesheet">
+    <title>BoilerPlate</title>
+    <style>
+        *{
+        font-family: 'Baloo Bhaina 2', cursive;
+    }
+    /* body hr{
+           width: 50%;
+           margin: 50px auto;
+           margin-top: 50px;
+           color: rgb(240, 71, 71);
+       } */
+       .home{
+           background-image: url("https://images.unsplash.com/photo-1592861956120-e524fc739696?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+           /* width: 100vw;
+           height:100vw; */
+           /* background-position: center; */
+           background-size: cover;
+           background-repeat: no-repeat;
+           
+
+       }
+       .loginImage{
+           
+            background-image: url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=732&q=80");
+            width: 100%;
+            height:100%;
+            /* background-position: center; */
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+        .registerImage{
+           
+           background-image: url("https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+           width: 100%;
+           height:100%;
+           /* background-position: center; */
+           background-size: cover;
+           background-repeat: no-repeat;
+
+       }
+        .header-img{
+            width: 100%;
+            height:200px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png");
+            position: relative;
+            text-align: center;
+            color: white;
+            
+            font-family: 'Baloo Bhaina 2', cursive;
+
+        }
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .search-box{
+            width: 30vw;
+            height: 60px;
+            background-color: white;
+            border: none;
+            padding-left: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: block;
+            margin:auto;
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+        .image{
+            width: auto;
+            height: 250px;
+            border-radius: 10px;
+            /* margin: 5px; */
+            margin-bottom: 0;
+            background-position: center;
+            border: 1px solid rgba(85, 83, 83, 0.3);
+            background-repeat: no-repeat;
+        }
+        .card{
+            border: 0;
+            border-radius: 10px;
+            transition: .2s;
+            cursor: pointer;
+           
+        }
+        .card:hover{
+            box-shadow: 0px 0px 20px rgb(172, 172, 172);
+        }
+        
+        
+        .card-body{
+            padding: 5px 10px;
+            padding-bottom: 10px;
+        }
+        .card-title{
+            font-size: 1.25rem;
+        }
+     @media  only screen and (max-width: 800px)  {
+        .loginImage{
+           
+           background-image: none;
+         }
+            }
+   
+
+
+    </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column vh-100" >
+
+    <%- include('../partials/navbar') %> 
+    <main class="container mt-2">           
+        <%- include('../partials/flash') %> 
+    <%- body %> 
+   </main>
+   <%- include('../partials/footer') %> 
+    
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+<script src="/formvalidations.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<% layout('layout/boilerplate') %>
+<a href="/foods">Cancel</a>
+ 
+    <div class="row">
+        <h1 class="text-center">Edit Food</h1>
+        <div class="col-6 offset-3">
+            <form action="/foods/<%= dish._id %>?_method=PUT" method="post" novalidate class="formvalidations" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                <input value="<%= dish.title%>" type="text" class="form-control" name="food[title]" id="title" placeholder="title of food" required>
+                <div class="valid-feedback">
+                    Looks Good
+                </div></div>
+                <div class="mb-3">
+                    <label class="form-label" for="restaurant">Restaurant Name</label>
+                    <input value="<%= dish.restaurant%>" type="text" class="form-control" id="restaurant" name="food[restaurant]" placeholder="restaurant name" required>
+                <div class="valid-feedback">
+                    Looks Good
+                </div></div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input value="<%= dish.location%>" type="text" class="form-control" id="location" name="food[location]" placeholder="location" required>
+                <div class="valid-feedback">
+                    Looks Good
+                </div></div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image</label>
+                    <input type="file" name="image" id="image" multiple>                
+                </div>
+                <div class="mb-3">
+                    <% dish.image.forEach(function(img, i) {  %>
+                    <img src="<%=img.url %>" width="100px" height="100px" alt="">
+                    <div class="form-check-inline">
+                        <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                    </div>
+                    <label for="image-<%=i%>">Delete?</label>
+                    <% })%>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price</label>    
+                    <div class="input-group mb-3">
+                    <span class="input-group-text" id="price-label">₹</span>
+                        <input value="<%= dish.price%>" type="text" class="form-control" name="food[price]" placeholder="price" aria-label="price" aria-describedby="price-label" required>
+                        <div class="valid-feedback">
+                            Looks Good
+                        </div>
+                     </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" id="description" name="food[description]" type="text" placeholder="description" required ><%= dish.description%></textarea>
+                <div class="valid-feedback">
+                    Looks Good
+                </div></div>
+                <div class="mb-3">
+                    <button class="btn btn-info"> Update Food</button>
+                </div>
+                </form>
+        </div>
+    </div>

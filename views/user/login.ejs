@@ -1,0 +1,69 @@
+<% layout('layout/boilerplate') %> 
+<!-- <h1>Login</h1>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+     <div class="col-"> 
+    <form action="/login" method="POST" class="formvalidations" novalidate>
+
+    <div class="mb-3">
+        <label class="form-label" for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="username" required>
+    <div class="valid-feedback">
+        Looks Good
+    </div> </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+    <div class="valid-feedback">
+        Looks Good
+    </div> </div>
+
+    <div class="mb-3">
+        <button class="btn btn-success"> Login</button>
+    </div>
+    
+</form>
+</div> 
+</div>
+</div> -->
+
+<section class="vh-100 loginImage" >
+    <div class="container-fluid  ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5 ">
+          <!-- <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=732&q=80"  alt="Sample image"> -->
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          
+    <form action="/login" method="POST" class="formvalidations" novalidate>
+           
+            <div class="mb-3 mt-5" >
+                <input type="text" class="form-control" id="username" name="username" placeholder="username" required>
+                <label class="form-label" for="username">Username</label>
+                <div class="valid-feedback">
+                Looks Good
+                </div> 
+            </div>
+  
+            <div class="mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+                <label class="form-label" for="password">Password</label>
+                <div class="valid-feedback">
+                Looks Good
+                </div> 
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                  class="link-danger">Register</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+   
+  </section>

@@ -1,0 +1,120 @@
+<% layout('layout/boilerplate') %> 
+<link rel="stylesheet" href="/stylesheets/stars.css">
+<div class="row">
+    <div class="col-6">
+      <div id="dishCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <% dish.image.forEach((img, i) => {  %>
+            <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                <img src="<%= img.url%>" class="d-block w-100" alt="">
+                <% console.log(img.url) %> 
+            </div>
+            <% }) %>
+
+        </div>
+        <% if(dish.image.length > 1) {%>
+        <a class="carousel-control-prev" href="#dishCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#dishCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <% } %>
+    </div>
+  </div>
+    <div class="col-6">
+      
+              <h1 style="color:rgb(158, 69, 217);"><%=dish.title%></h1>
+              <h5 ><%=dish.restaurant%></h5>
+              <p ><%= dish.description %></p>
+           
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-muted"><%= dish.location %></li>
+              <li class="list-group-item text-muted">₹<%= dish.price %></li>
+              <li class="list-group-item text-muted">Uploaded By: <%= dish.author.username %></li>
+            </ul>
+            <div >
+            <% if(currentUser && dish.author.equals(currentUser._id)) {%> 
+            
+            <div >
+              <a href="/foods/<%= dish._id %>/edit" class="card-link btn" style="color:red;">Click Here To Edit Food Review</a>
+              </div>
+              
+              <form class="d-inline" action="/foods/<%= dish._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger" style=" background-color: Transparent; background-repeat:no-repeat; border: none;color:red   ">Click Here To Delete Food</button>
+             </form>
+            
+            <% } %> 
+                <!-- <a href="/foods" class="btn btn-success">Go Back</a> -->
+             
+            </div>
+            </div>    
+  </div>
+  <hr class="mx-auto my-5" >
+<div class="row">
+  <div class="col-12" style=" text-align:center"><h1>Reviews</h1></div>
+  
+   
+  <div class="col-6">
+    <div class="mb-3">
+      <% for(let review of dish.review) { %>
+        <div class="card mb-3 ">
+            <div class="card-body">
+                <h5 class="card-title"><%= review.author.username %></h5>
+                <p class="starability-result" data-rating=<%= review.rating %>>
+                  Rated: <%= review.rating %> stars
+                </p>
+               <!-- <h6 class="card-subtitile mb-2 text-muted">By<%= review.author.username %> </h6> -->
+                <p class="card-text">Review: <%= review.body %></p>
+                
+            </div>
+            <% if(currentUser && review.author.equals(currentUser._id)){ %> 
+            <form action="/foods/<%=dish._id%>/review/<%=review._id%>?_method=DELETE" method="POST">
+              <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+          <% } %> 
+        </div>
+        <% } %>
+    </div>
+  
+  </div>
+<div class="col-6">
+          <h2 style="color:red">Leave a review</h2>
+          <form action="/foods/<%=dish.id%>/review" method="POST" nonvalidate  class="mb-3 formvalidations">
+          <div class="mb-3">
+            <label class="form-label" for="rating">Rating</label>
+            
+          <fieldset class="starability-growRotate">
+            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+          <div class="mb-3">
+            <div>
+            <label class="form-label" for="body">Review</label>
+          </div>
+            <textarea name="review[body]" id="body" cols="30" rows="3" required></textarea>
+            <div class="valid-feedback">
+              Looks Good
+          </div> 
+          </div>
+          
+  <% if(currentUser){ %> 
+          <button class="btn btn-danger mb-3">Submit</button>
+        </form>
+        <% }else{%>
+          <div>Add a Review <span><a href="/login"class="btn btn-danger" style="color: white;">Login</a></span></div>
+          <% } %>  
+      
+</div>
+</div>
