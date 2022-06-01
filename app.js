@@ -19,6 +19,9 @@ const userRoutes= require('./routes/user');
 const passport= require('passport');
 const LocalStrategy= require('passport-local');
 
+// const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 //express
 const app= express();
 app.use(express.urlencoded({extended:true}));
@@ -47,8 +50,23 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')));
 
 
+const secret="thisshouldbeabettersecret";
+
+
+const store = MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret,
+    }
+});
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e)
+})
 const sessionconfig= {
-    secret: 'thisshouldbeabettersecret',
+    store,
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie:{
